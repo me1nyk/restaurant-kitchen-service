@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
@@ -14,10 +15,7 @@ class DishType(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField(
-        blank=False,
-        error_messages={"blank": "Please, enter your years of experience."}
-    )
+    years_of_experience = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ["years_of_experience"]
@@ -39,7 +37,7 @@ class Dish(models.Model):
         null=True,
         related_name="dishes"
     )
-    cooks = models.ManyToManyField(Cook, related_name="dishes")
+    cooks = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="dishes")
 
     class Meta:
         ordering = ["name"]
