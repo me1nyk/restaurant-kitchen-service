@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <h1>Dish info:</h1>
+  <p><strong>Name:</strong> {{ dish.name }}</p>
+  <p><strong>Dish Type:</strong> {{ dish.dish_type.name }}</p>
+  <p><strong>Description:</strong> {{ dish.description }}</p>
+  <p><strong>Price:</strong> {{ dish.price }}$</p>
+
+  <div class="ml-3">
+    <h3>Cooks:</h3>
+
+    {% for cook in dish.cooks.all %}
+      <hr>
+      <p class="text-muted"><strong>Id:</strong> {{ cook.pk }}</p>
+      <p>
+        <strong>Cook's info:</strong>
+        {{ cook.first_name }} {{ cook.last_name }}: {{ cook.username }}
+      </p>
+    {% empty %}
+      <p>No cooks!</p>
+    {% endfor %}
+  </div>
+{% endblock %}

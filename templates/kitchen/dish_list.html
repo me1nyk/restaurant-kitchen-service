@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <h1>Dish List:</h1>
+  {% if dish_list %}
+    <ul>
+      {% for dish in dish_list %}
+        <li>
+          <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no dishes!</p>
+  {% endif %}
+{% endblock %}

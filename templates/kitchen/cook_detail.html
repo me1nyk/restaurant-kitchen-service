@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <h1>Cook information:</h1>
+  <p><strong>Fullname: {{ cook.first_name }} {{ cook.last_name }}</strong></p>
+  <p><strong>Username: {{ cook.username }}</strong></p>
+  <p><strong>Years of experience: {{ cook.years_of_experience }}</strong></p>
+
+  <div class="ml-3">
+    <h3>Dishes:</h3>
+
+    {% for dish in cook.dishes.all %}
+      <hr>
+      <p class="text-muted"><strong>Name:</strong> {{ dish.name }}</p>
+      <p><strong>Dish type:</strong> {{ dish.dish_type.name }}</p>
+      <p><strong>Description:</strong> {{ dish.description }}</p>
+    {% empty %}
+      <p>No dishes!</p>
+    {% endfor %}
+  </div>
+{% endblock %}
