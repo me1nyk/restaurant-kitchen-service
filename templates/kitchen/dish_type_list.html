@@ -1,14 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Dish Types List:</h1>
-  {% if dish_type_list %}
-    <ul>
-      {% for dish_type in dish_type_list %}
-        <li>{{ dish_type.name }}</li>
+    <h1>Dish Type List</h1>
+    <a class="btn btn-primary" href="{% url 'kitchen:dish-type-create' %}">Create new dish type</a>
+
+    {% if dish_type_list %}
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+
+        {% for dish_type in dish_type_list %}
+        <tr>
+          <td>
+              {{ dish_type.name }}
+          </td>
+          <td>
+            <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}">
+                Update
+            </a>
+          </td>
+          <td>
+            <a style="color: red" href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}">
+              Delete
+            </a>
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
-    {% else %}
-    <p>There are no dish types!</p>
+    </table>
+
+  {% else %}
+      <p>There are no types of dishes!</p>
   {% endif %}
 {% endblock %}
