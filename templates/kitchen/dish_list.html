@@ -6,13 +6,22 @@
     <a class="btn btn-primary float-right" href="{% url 'kitchen:dish-create' %}">Create new dish</a>
   </h1>
   {% if dish_list %}
-    <ul>
-      {% for dish in dish_list %}
-        <li>
-          <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a>
-        </li>
+    <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Dish Type</th>
+        </tr>
+          {% for dish in dish_list %}
+        <tr>
+          <td>
+              <a href="{% url 'kitchen:dish-detail' pk=dish.id%}">{{ dish.name }}</a>
+          </td>
+          <td>
+              {{ dish.dish_type }}
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
     {% else %}
     <p>There are no dishes!</p>
   {% endif %}
