@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'kitchen',
     'crispy_forms',
     'crispy_bootstrap4',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'kitchen.context_processors.cfg_assets_root',
             ],
         },
     },
@@ -135,3 +137,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'kitchen.Cook'
 
 LOGIN_REDIRECT_URL = '/'
+
+ASSETS_ROOT = '/static/assets'
