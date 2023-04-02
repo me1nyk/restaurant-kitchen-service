@@ -1,0 +1,21 @@
+{% extends "base-presentation.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <header>
+  <div class="page-header" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/vege.jpg')">
+  <div class="border rounded p-5">
+    <br>
+    <br>
+  <h1>{{ object|yesno:"Update,Create" }} Dish Type</h1>
+
+  <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+
+    <input style="background-color: #32CD32" class="btn btn-primary" type="submit" value="Submit">
+  </form>
+  </div>
+  </div>
+  </header>
+{% endblock %}

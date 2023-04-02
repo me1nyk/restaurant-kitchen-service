@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'kitchen',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -63,10 +67,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'kitchen.context_processors.cfg_assets_root',
             ],
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'restaurant_kitchen_service.wsgi.application'
 
@@ -118,7 +125,17 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'kitchen.Cook'
+
+LOGIN_REDIRECT_URL = '/'
+
+ASSETS_ROOT = '/static/assets'

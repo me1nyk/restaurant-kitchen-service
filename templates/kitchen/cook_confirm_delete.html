@@ -1,0 +1,21 @@
+{% extends "base-presentation.html" %}
+
+{% block content %}
+  <div class="page-header" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/please.jpg')">
+  <div class="border rounded p-5">
+  <br>
+  <br>
+  <h1>Cook Delete</h1>
+
+    <p>Are you sure you want to delete this cook: <strong style="color: red">
+      {{ cook.first_name }} {{ cook.last_name }}
+    </strong>?</p>
+
+    <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete" class="btn btn-danger">
+    <a style="background-color: #32CD32" href="{% url 'kitchen:cook-list' %}" class="btn btn-primary">Cancel</a>
+</form>
+</div>
+  </div>
+{% endblock content %}

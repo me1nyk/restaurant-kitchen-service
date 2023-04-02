@@ -1,0 +1,51 @@
+{% extends "base-presentation.html" %}
+
+{% block content %}
+  <header class="header-2">
+  <div class="page-header" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/vege.jpg')">
+  <div class="border rounded p-5">
+    <br>
+    <br>
+  <h1>
+    Dish info:
+    {% if user in dish.cooks.all %}
+      <a href="{% url 'kitchen:dish-remove-or-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Delete me from this dish
+      </a>
+    {% else %}
+      <a style="background-color: #00CED1" href="{% url 'kitchen:dish-remove-or-assign' pk=dish.id %}" class="btn btn-success link-to-page">
+        Assign me to this dish
+      </a>
+    {% endif %}
+
+    <a style="background-color: #32CD32" class="btn btn-primary float-right" href="{% url 'kitchen:dish-update' pk=dish.id %}">Update</a>
+    <br>
+    <a class="btn btn-danger" type="submit" href="{% url 'kitchen:dish-delete' pk=dish.id%}">Delete</a>
+  </h1>
+  <div class="p-3 mb-2 rounded" style="background-color: rgba(255,255,255,0.5); backdrop-filter: blur(10px);">
+  <p style="font-size: larger; color: #181818"><strong>◯ Name:</strong> {{ dish.name }}</p>
+  <p style="font-size: larger; color: #181818"><strong>◯ Dish Type:</strong> {{ dish.dish_type.name }}</p>
+  <p style="font-size: larger; color: #181818"><strong>◯ Description:</strong> {{ dish.description }}</p>
+  <p style="font-size: larger; color: #181818"><strong>◯ Price:</strong> {{ dish.price }}$</p>
+</div>
+
+  <div style="backdrop-filter: blur(10px); font-size: larger; color: #181818">
+  <div class="ml-3" style="background-color: rgba(255,255,255,0.5); padding: 10px;">
+    <h3 style="font-size: larger; color: #181818">Cooks:</h3>
+
+    {% for cook in dish.cooks.all %}
+      <hr>
+      <p><strong>Id:</strong> {{ cook.pk }}</p>
+      <p>
+        <strong>Cook's info:</strong>
+        {{ cook.first_name }} {{ cook.last_name }}: {{ cook.username }}
+      </p>
+    {% empty %}
+      <p>No cooks!</p>
+    {% endfor %}
+  </div>
+  </div>
+  </div>
+  </div>
+  </header>
+{% endblock %}

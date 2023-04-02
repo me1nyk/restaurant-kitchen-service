@@ -1,0 +1,12 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block content %}
+
+  <div class="page-header section-height-100 d-flex justify-content-center align-items-center" style="background-image:
+      url('{{ ASSETS_ROOT }}/img/curved-images/logoutt.jpg'); backdrop-filter: blur(10px);">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <a style="color: #DCDCDC; background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);"
+   href="{% url 'login'%}" class="btn btn-primary btn-lg">Click here to login again</a>
+    </div>
+  </div>
+{% endblock %}

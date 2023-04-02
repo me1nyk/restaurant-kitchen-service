@@ -1,0 +1,41 @@
+{% extends "base-presentation.html" %}
+
+{% block content %}
+  <header class="header-2">
+  <div class="page-header" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/vege.jpg')">
+  <div class="border rounded p-5">
+    <br>
+    <br>
+    <h1>Cook information:
+      <a style="background-color: #32CD32" class="btn btn-primary float-right" href="{% url 'kitchen:cook-update' pk=cook.id %}">
+        Update
+      </a>
+      <a style="background-color: #FF0000" class="btn btn-danger float-right mr-2" href="{% url 'kitchen:cook-delete' pk=cook.id %}">
+        Delete
+      </a>
+    </h1>
+    <p style="color: #181818; font-size: larger"><strong>◯ Fullname:</strong>
+      {{ cook.first_name }} {{ cook.last_name }}
+    </p>
+    <p style="color: #181818; font-size: larger"><strong>◯ Username:</strong>
+      {{ cook.username }}
+    </p>
+    <p style="color: #181818; font-size: larger"><strong>◯ Years of experience:</strong>
+      {{ cook.years_of_experience }}
+    </p>
+
+    <div class="ml-3">
+      <h3 style="color: #181818">Dishes:</h3>
+
+      {% for dish in cook.dishes.all %}
+        <hr>
+        <p style="color: #181818"><strong>⚫ Name:</strong> {{ dish.name }}</p>
+        <p style="color: #181818"><strong>Dish type:</strong> {{ dish.dish_type.name }}</p>
+        <p style="color: #181818"><strong>Description:</strong> {{ dish.description }}</p>
+      {% empty %}
+        <p style="color: #181818">This cook is not assigned to any dish.</p>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+{% endblock %}
