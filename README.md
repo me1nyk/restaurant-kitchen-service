@@ -36,3 +36,7 @@ If you'd like to contribute to the Restaurant Kitchen Service, please follow the
 Contact
 If you have any questions about the Restaurant Kitchen Service, please contact me - serg.melnyk1998@gmail.com.
 I'd be happy to help!
+
+![photo_2023-04-03_01-11-17.jpg](..%2F..%2Fphoto_2023-04-03_01-11-17.jpg)
+
+![photo_2023-04-03_01-11-26.jpg](..%2F..%2Fphoto_2023-04-03_01-11-26.jpg)
