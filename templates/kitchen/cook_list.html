@@ -1,42 +1,68 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 {% load crispy_forms_filters %}
 
 {% block content %}
-    <h1>
-      Cook List
-      <a class="btn btn-primary float-right" href="{% url 'kitchen:cook-create' %}">Create new cook</a>
+  <header class="header-2">
+  <div class="page-header" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/onion.jpg')">
+  <div class="container">
+    <h1 class="mb-4">
+      <br>
+      <br>
+      Cook List:
+      <a style="background-color: #32CD32" class="btn btn-primary float-right" href="{% url 'kitchen:cook-create' %}">Create new cook</a>
     </h1>
-
-    <form action="" method="get">
-    {% csrf_token %}
-    {{ search_form|crispy }}
-    <input type="submit" value="🔍">
+    <form class="form-inline mb-4" action="" method="get">
+      {% csrf_token %}
+      {{ search_form|crispy }}
+      <button style="background-color: #1E90FF" class="btn btn-primary ml-2" type="submit">🔍 Search</button>
     </form>
 
     {% if cook_list %}
-      <table class="table">
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-
-        {% for cook in cook_list %}
-        <tr>
-          <td>
-              {{ cook.first_name }}
-          </td>
-          <td>
-              {{ cook.last_name }}
-          </td>
-          <td>
-            <a href="{% url 'kitchen:cook-detail' pk=cook.id%}">{{ cook.username }}</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-
-  {% else %}
-      <p>There are no cooks!</p>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cook in cook_list %}
+            <tr>
+              <td>
+                {{ cook.first_name }}
+              </td>
+              <td>
+                {{ cook.last_name }}
+              </td>
+              <td>
+                <a href="{% url 'kitchen:cook-detail' pk=cook.id%}">{{ cook.username }}</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="alert" role="alert">
+      <b style="color: red">
+        Oops! We couldn't find what you're looking for. Please check your spelling and try again.
+      </b>
+      </div>
+    {% endif %}
+  <div class="pagination">
+  {% if page_obj.has_previous %}
+    <a style="background-color: #0d6efd" class="btn btn-primary" href="?page={{ page_obj.previous_page_number }}">⬅ Prev</a>
   {% endif %}
+
+  {% if page_obj.has_previous and page_obj.has_next %}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  {% endif %}
+
+  {% if page_obj.has_next %}
+    <a style="background-color: #0d6efd" class="btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next ➡</a>
+  {% endif %}
+  </div>
+  </div>
+  </div>
+  </header>
 {% endblock %}
