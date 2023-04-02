@@ -1,15 +1,22 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 
 {% block content %}
-
+  <div class="page-header" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/please.jpg')">
+  <div class="border rounded p-5">
+  <br>
+  <br>
   <h1>Dish Type Delete</h1>
 
-    <p>Are you sure you want to delete this dish type: <strong>{{ dishtype }}</strong>?</p>
+    <p>Are you sure you want to delete this dish type: <strong style="color: red">
+      {{ dishtype }}
+    </strong>?</p>
 
     <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes, delete" class="btn btn-danger">
-    <a href="{% url 'kitchen:dish-type-list' %}" class="btn btn-primary">Cancel</a>
+    <a style="background-color: #32CD32" href="{% url 'kitchen:dish-type-list' %}" class="btn btn-primary">Cancel</a>
 </form>
-
+</div>
+  </div>
 {% endblock content %}
+
