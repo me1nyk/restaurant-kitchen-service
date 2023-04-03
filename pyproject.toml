@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "restaurant-kitchen-service"
+version = "0.0.0"
+description = ""
+authors = ["Serhii Melnyk <serg.melnyk1998@gmail.com>"]
+readme = "README.md"
+packages = [{include = "restaurant_kitchen_service"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dj-database-url = "^1.3.0"
+psycopg2-binary = "^2.9.6"
+whitenoise = {extras = ["brotli"], version = "^6.4.0"}
+gunicorn = "^20.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
