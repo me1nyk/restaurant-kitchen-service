@@ -9,7 +9,7 @@ and meets your high standards of quality.
 
 The Restaurant Kitchen Service offers the following features:
 * Dish Management: Create new dishes and assign them to specific dish types.
-* Dish Type Management: Define different types of dishes, such as appetizers, entrees, and desserts.
+* Dish Type Management: Define different types of dishes, such as appetizers, main course, and desserts.
 * Cook Management: Add new cooks to the system and assign them to specific dishes.
 * Dashboard: View a dashboard that displays all dishes, dish types, and cooks.
 
@@ -17,30 +17,28 @@ The Restaurant Kitchen Service offers the following features:
 
 [Kitchen service project deployed to Render](https://kitchen-service-m11x.onrender.com)
 
-*For credentials contact me in Slack, please.
+Username: test.user
+
+Password: checkpage201
 
 ## Installation
 
 To get started with the Restaurant Kitchen Service, follow these steps:
 ```
+1. Clone repo:
 git clone https://github.com/me1nyk/restaurant-kitchen-service.git
+2. Create virtual env:
 python -m venv venv
 source venv/bin/activate (on Linux/maOS)
 venv\Scripts\activate (on Windows)
+3. Connect to Postgres DB:
 Set env variable DATABASE_URL.
-*For db url please contact me in Slack.
+set DATABASE_URL=postgres://vminnowo:kzV6RZpW5mHqWNH7uV4TG8mf-ullTffG@snuffleupagus.db.elephantsql.com/vminnowo
+4. Run build script to install all dependencies and configure app:
 sh build.sh
+5. Start Django server:
 python manage.py runserver
 ```
-
-## Contributing
-
-If you'd like to contribute to the Restaurant Kitchen Service, please follow these steps:
-1. Fork this repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them to your branch.
-4. Push your changes to your forked repository.
-5. Create a pull request to merge your changes into this repository.
 
 ## Contact
 
