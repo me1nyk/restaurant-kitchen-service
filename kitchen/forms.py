@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
-from kitchen.models import Dish
+from kitchen.models import Dish, Cook
 
 
 class DishForm(forms.ModelForm):
@@ -40,3 +41,9 @@ class CookSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
     )
+
+
+class CookCreatingForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = Cook
+        fields = UserCreationForm.Meta.fields + ("years_of_experience",)

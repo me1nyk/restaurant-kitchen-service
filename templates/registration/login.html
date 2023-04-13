@@ -23,7 +23,7 @@
                   {% if msg %}
                       {{ msg | safe }}
                   {% else %}
-                      Add your credentials
+                      Add your credentials:
                   {% endif %}
                 </p>
               </div>
@@ -34,11 +34,16 @@
                   {% csrf_token %}
 
                   <div class="mb-3">
+                    Username:
                     {{ form.username }}
                   </div>
                   <div class="mb-3">
+                    Password: 
                     {{ form.password }}
                   </div>
+                  {% if form.errors %}
+                    <p>Your login credentials don't match our records. Please verify and retry.</p>
+                  {% endif %}
                   <div class="text-center">
                     <button style="background: linear-gradient(114.3deg, rgb(19, 126, 57) 0.2%, rgb(8, 65, 91) 68.5%);
                      color: white" type="submit" name="login"
